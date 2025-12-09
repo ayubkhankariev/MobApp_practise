@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.example.blackfridaysale.data.PriceUtils
 import com.example.blackfridaysale.model.Product
 import com.example.blackfridaysale.model.SupportedLanguage
+import com.example.blackfridaysale.model.forLanguage
 import com.example.blackfridaysale.ui.theme.DiscountBadgeColor
 import com.example.blackfridaysale.ui.theme.TextDisabled
 

@@ -8,16 +8,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.blackfridaysale.R
 
-// To use Host Grotesk, download the font files (ttf) and place them in app/src/main/res/font/
-// Then uncomment the following lines and replace FontFamily.SansSerif below.
-/*
 val HostGrotesk = FontFamily(
     Font(R.font.host_grotesk_regular, FontWeight.Normal),
     Font(R.font.host_grotesk_medium, FontWeight.Medium),
     Font(R.font.host_grotesk_bold, FontWeight.Bold)
 )
-*/
-val HostGrotesk = FontFamily.SansSerif
 
 // Fallback if fonts are missing, replace HostGrotesk with FontFamily.Default
 val AppTypography = Typography(
