@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -65,12 +66,12 @@ fun ProductCard(
             ) {
                 Image(
                     painter = painterResource(id = product.imageResId),
-                    contentDescription = null,
+                    contentDescription = product.name.forLanguage(language),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
-                        .align(Alignment.Center),
-                    contentScale = ContentScale.Fit
+                        .aspectRatio(1f),
+                    contentScale = ContentScale.Crop,
+                    alignment = Alignment.Center
                 )
 
                 // Heart Icon (Top End)
@@ -119,12 +120,15 @@ fun ProductCard(
                 ) {
                     Text(
                         text = formattedNewPrice,
-                        style = MaterialTheme.typography.titleMedium
+                        color = DiscountBadgeColor,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontWeight = FontWeight.Bold
+                        )
                     )
                     
                     Text(
                         text = formattedOldPrice,
-                        style = MaterialTheme.typography.bodyMedium.copy(
+                        style = MaterialTheme.typography.bodySmall.copy(
                             textDecoration = TextDecoration.LineThrough,
                             color = TextDisabled
                         )
