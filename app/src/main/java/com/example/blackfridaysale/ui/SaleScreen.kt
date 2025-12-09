@@ -1,4 +1,6 @@
-import androidx.compose.foundation.Image
+package com.example.blackfridaysale.ui
+
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -7,12 +9,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -33,12 +36,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.example.blackfridaysale.R
 import com.example.blackfridaysale.data.ProductsRepository
 import com.example.blackfridaysale.model.LocalizedText
 import com.example.blackfridaysale.model.SupportedLanguage
@@ -76,15 +76,9 @@ fun SaleScreen(viewModel: MainViewModel) {
                     },
                     navigationIcon = {
                         IconButton(onClick = { /* No action */ }) {
-                            val arrowIcon = if (currentLanguage == SupportedLanguage.ARABIC) {
-                                R.drawable.arrow_right
-                            } else {
-                                R.drawable.arrow_left
-                            }
                             Icon(
-                                painter = painterResource(id = arrowIcon),
-                                contentDescription = "Back",
-                                modifier = Modifier.size(24.dp)
+                                imageVector = Icons.Default.ArrowBack,
+                                contentDescription = "Back"
                             )
                         }
                     },
@@ -92,9 +86,8 @@ fun SaleScreen(viewModel: MainViewModel) {
                         // Cart Icon
                         IconButton(onClick = { /* No action */ }) {
                             Icon(
-                                painter = painterResource(id = R.drawable.shopping_ca),
-                                contentDescription = "Cart",
-                                modifier = Modifier.size(24.dp)
+                                imageVector = Icons.Default.ShoppingCart,
+                                contentDescription = "Cart"
                             )
                         }
                         
@@ -133,13 +126,7 @@ fun LanguageSwitcher(
                 .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = painterResource(id = currentLanguage.flagResId),
-                contentDescription = currentLanguage.displayName,
-                modifier = Modifier
-                    .size(28.dp)
-                    .clip(CircleShape)
-            )
+            Text(text = currentLanguage.flagEmoji)
             Spacer(modifier = Modifier.width(4.dp))
             Text(
                 text = currentLanguage.displayName,
@@ -155,13 +142,7 @@ fun LanguageSwitcher(
                 DropdownMenuItem(
                     text = {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Image(
-                                painter = painterResource(id = language.flagResId),
-                                contentDescription = language.displayName,
-                                modifier = Modifier
-                                    .size(28.dp)
-                                    .clip(CircleShape)
-                            )
+                            Text(text = language.flagEmoji)
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(text = language.displayName)
                         }

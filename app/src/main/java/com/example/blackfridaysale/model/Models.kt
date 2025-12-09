@@ -2,12 +2,10 @@ package com.example.blackfridaysale.model
 
 import androidx.annotation.DrawableRes
 
-import com.example.blackfridaysale.R
-
-enum class SupportedLanguage(val code: String, val displayName: String, val flagEmoji: String, @DrawableRes val flagResId: Int) {
-    ENGLISH("en", "English", "🇺🇸", R.drawable.flag_en),
-    SPANISH("es", "Español", "🇪🇸", R.drawable.flag_es),
-    ARABIC("ar", "العربية", "🇦🇪", R.drawable.flag_ar)
+enum class SupportedLanguage(val code: String, val displayName: String, val flagEmoji: String) {
+    ENGLISH("en", "English", "🇺🇸"),
+    SPANISH("es", "Español", "🇪🇸"),
+    ARABIC("ar", "العربية", "🇦🇪")
 }
 
 data class LocalizedText(
